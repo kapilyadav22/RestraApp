@@ -1,5 +1,5 @@
 import React from 'react'
-import { restaurantList } from './restraList';
+import restaurantList from '../components/restraList';
 
 const styleCard = {
     backgroundColor: "#ececec"
@@ -39,6 +39,7 @@ const RestraurantCard = (props) => {
     )
 }
 
+//not using key is not acceptable << index as key is not recommended << unique key is best practice
 export default function Body() {
     return (
         <div className='body'>

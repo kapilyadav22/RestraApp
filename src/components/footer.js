@@ -1,5 +1,5 @@
 // Footer component for footer section
-export const Footer = () => {
+const Footer = () => {
     return (
       <div className="footer">
         Created By
@@ -14,3 +14,5 @@ export const Footer = () => {
       </div>
     );
   };
+
+  export default Footer;
