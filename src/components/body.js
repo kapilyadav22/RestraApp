@@ -1,43 +1,6 @@
 import React from 'react'
 import restaurantList from '../components/restraList';
-
-const styleCard = {
-    backgroundColor: "#ececec"
-}
-
-const RestraurantCard = (props) => {
-    const { resData } = props;
-    const { cloudinaryImageId,
-        name,
-        avgRating,
-        cuisines,
-        address, costForTwo
-    } = resData.data;
-    return (
-        <div className='res-card' style={styleCard}>
-            <img
-                className="card-image"
-                alt=""
-                src={"https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/" + cloudinaryImageId}> 
-            </img>
-            <div className='res-details'>
-                <div className='res-name'>
-                    <span>{name}</span> <br />
-                </div>
-                <div>
-                    <img className="rating" src="https://www.clipartmax.com/png/middle/307-3078264_star-rating-icon-rating-star-single-png.png" alt=""
-                    />
-                    <span>{avgRating}</span> <br />
-                    <span>{cuisines.join(", ")}</span> <br />
-                    <span>{address}</span> <br />
-                    <span>₹{costForTwo/100}</span> <br />
-                </div>
-            </div>
-
-
-        </div>
-    )
-}
+import RestraurantCard from './restraurantCard';
 
 //not using key is not acceptable << index as key is not recommended << unique key is best practice
 export default function Body() {
