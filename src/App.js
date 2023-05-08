@@ -3,26 +3,17 @@ import './index.css';
 import Header from './components/header';
 import Body from './components/body';
 import Footer from './components/footer';
-// Header
-//   -Logo
-//   -Nav Items
-// Body
-//   -Search
-//   -RestraurantContainer
-//   -RestraurantCard
-// Footer
-//   -Copyright
-//   -Links
-//   -Address
-//   -Contact
 
 function App() {
   return (
-    <div className="App">
+    <>
+     <div className="App">
       <Header/>
       <Body/>
       <Footer/>
     </div>
+    </>
+   
 
   );
 }
