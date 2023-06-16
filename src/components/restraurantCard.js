@@ -33,8 +33,6 @@ const RestraurantCard = (props) => {
                     <span>₹{costForTwo/100}</span> <br />
                 </div>
             </div>
-
-
         </div>
     )
 };
