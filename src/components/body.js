@@ -5,8 +5,8 @@ import Shimmer from './shimmer';
 import { Link } from 'react-router-dom';
 
 function filterData(text, restraurants) {
-    const reslist = restraurants.filter((restraurant) => 
-    restraurant?.data?.name?.toLowerCase()?.includes(text.toLowerCase()));
+    const reslist = restraurants.filter((restraurant) =>
+        restraurant?.data?.name?.toLowerCase()?.includes(text.toLowerCase()));
     return reslist;
 }
 
@@ -20,7 +20,7 @@ export default function Body() {
         try {
             const data = await fetch(swiggy_api_URL);
             const json = await data.json();
-            
+
             setAllRestraurants(json?.data?.cards[2]?.data?.data?.cards);
             setFilterRestraurants(json?.data?.cards[2]?.data?.data?.cards);
         }
@@ -44,17 +44,17 @@ export default function Body() {
 
     return (
         <>
-            <div className='body'>
-                <div className="search-container">
+            <div className="relative ...">
+                <div className="search p-4 m-4 items-center">
                     <input type="text"
-                        className="search-input"
+                        className="p-2 rounded-lg border border-solid border-black"
                         placeholder="Search"
                         value={text}
                         onChange={(e) => {
                             setText(e.target.value);
                         }}
                     />
-                    <button className="search-btn"
+                    <button className="px-4 py-2 m-4 bg-green-400 rounded-lg"
                         onClick={() => {
                             const data = filterData(text, allRestraurants);
                             setFilterRestraurants(data);
@@ -66,20 +66,22 @@ export default function Body() {
 
 
                 {(allRestraurants?.length === 0) ? <Shimmer /> :
-                ( 
-                <div className="res-container">
-                    {   
-                    (filterRestraurants?.length===0)? <h1>No Restraurant Found</h1>:
-                    filterRestraurants.map((restraurant) => {
-                        return (  
-                        <Link key={restraurant.data.id} className='link' to={"/Restraurant/:resId"}>
-                        <RestraurantCard  resData={restraurant}></RestraurantCard> 
-                        </Link>
-                         );
-                        })    
-                    }
-                </div>
-                )}
+                    (
+                        <div className="flex flex-wrap h-52">
+                            {
+                                (filterRestraurants?.length === 0) ? <h1>No Restraurant Found</h1> :
+                                    filterRestraurants.map((restraurant) => {
+                                        return (
+                                            <Link key={restraurant.data.id}
+                                                className='link'
+                                                to={"/Restraurant/" + restraurant.data.id}>
+                                                <RestraurantCard resData={restraurant}></RestraurantCard>
+                                            </Link>
+                                        );
+                                    })
+                            }
+                        </div>
+                    )}
             </div>
         </>
     )

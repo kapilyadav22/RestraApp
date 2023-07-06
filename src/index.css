@@ -1,163 +1,22 @@
-.Navigation {
-  display: flex;
-  justify-content: space-between;
-  margin: 5px;
-  border-radius: 15px;
-  box-shadow: -1px 4px 20px 10px rgba(0, 0, 0, 0.15);
-  /* padding: 0px 20px; */
-}
+/* Ways to write CSS:
+Normal Native CSS
+SCSS
+inline CSS
+Component Libraries like - Material Ui, Base UI, ANT, Chakra, Tailwind CSS 
+Styled Component - 
+*/
 
-.logo {
-  width: 80px;
-}
+/* Pros and Cons of Using CSS Library:
+Pros:
+Consistency in Design
+Increases the speed of development
+Take Care of responsiveness
 
-.HeaderList {
-  font-size: large;
-  padding: 0px 20px;
-}
+Cons:
+Increases bundle size
+Restrict Customization */
 
-.HeaderList:hover {
-  cursor: pointer;
-}
-.HeaderList > ul {
-  display: flex;
-  list-style-type: none;
-  padding: 10px;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-.HeaderList > ul > li {
-  padding: 10px;
-}
-
-.res-container {
-  display: flex;
-  flex-wrap: wrap;
-  shape-outside: -moz-linear-gradient();
-}
-.res-card {
-  border-radius: 15px;
-  margin: 10px;
-  padding: 5px;
-  width: 300px;
-  height: 400px;
-}
-.res-card:hover {
-  cursor: pointer;
-  border: 1px solid black;
-}
-
-.search {
-  margin: 10px;
-  padding: 10px;
-}
-
-.card-image {
-  border-radius: 15px;
-  width: 300px;
-  height: 200px;
-}
-
-.rating {
-  width: 25px;
-}
-
-.body {
-  background-color: whitesmoke;
-  padding: 0px 100px;
-}
-
-.res-name {
-  font-weight: bold;
-}
-.res-details {
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
-  padding: 10px;
-}
-
-/* footer CSS */
-.footer {
-  margin: 5px;
-  width: auto;
-  text-align: center;
-  background-color: whitesmoke;
-  padding: 20px 10px 20px;
-  border-radius: 5px;
-  box-shadow: -1px 4px 20px 14px rgba(0, 0, 0, 0.2);
-}
-
-.footer > i {
-  padding: 0 5px 0;
-  font-size: smaller;
-}
-
-.fa-heart {
-  color: darkred;
-}
-
-.footer > strong {
-  padding-left: 2px;
-}
-
-.footer > strong > span {
-  color: rgb(133, 87, 0);
-}
-
-.search-container {
-  text-align: center;
-}
-
-.search-container > .search-input {
-  width: 30%;
-  color: rgb(2, 62, 126);
-  padding: 12px 20px;
-  font-size: large;
-  font-family: "Franklin Gothic Medium";
-  margin: 8px 0;
-  border-radius: 8px;
-  outline-style: double;
-  outline-width: 0.1cm;
-  outline-color: rgb(255, 224, 102);
-}
-.search-container > .search-btn {
-  text-size-adjust: 30px;
-  font-size: larger;
-  width: 20%;
-  padding: 12px 20px;
-  margin: 8px 10px;
-  font-family: Tahoma;
-  font-display: inherit;
-  border-radius: 10px;
-  color: rgb(7, 17, 17);
-  background-color: bisque;
-}
-
-.Navigation > .loginbutton {
-  display: flex;
-  margin: 10px;
-  border: none;
-  padding: 10px;
-}
-
-.shimmer-card {
-  border-radius: 15px;
-  margin: 10px;
-  padding: 5px;
-  width: 300px;
-  height: 500px;
-  background: lightgray;
-}
-
-.Error {
-  text-align: center;
-}
-
-.Error > .img {
-  width: 30%;
-}
-
-.res-container > .link {
-  padding: 10px;
-  font-style: normal;
-  text-decoration: none;
-  color: black;
-}

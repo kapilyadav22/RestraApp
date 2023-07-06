@@ -10,3 +10,4 @@ export const swiggy_api_URL =
   export const errorURL = "https://previews.123rf.com/images/borilove/borilove1304/borilove130400106/19354917-oops-error-yellow-sign-on-white-background.jpg";
 
   export const zomatoURL ="https://www.zomato.com/webroutes/getPage?page_url=";
+export const menuUrl = "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=28.6247821&lng=77.30013249999999&restaurantId=";

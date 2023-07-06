@@ -14,26 +14,25 @@ const RestraurantCard = (props) => {
         address, costForTwo
     } = resData.data;
     return (
-        <div className='res-card' style={styleCard}>
+        <div className='m-4 p-4 w-[250px] rounded-lg bg-pink-50 hover:bg-pink-200 sm:bg-yellow-50 sm:hover:bg-yellow-100' >
             <img
-                className="card-image"
+                className="card-image rounded-lg"
                 alt=""
-                src={IMG_CDN_URL + cloudinaryImageId}> 
+                src={IMG_CDN_URL + cloudinaryImageId}>
             </img>
             <div className='res-details'>
-                <div className='res-name'>
-                    <span>{name}</span> <br />
-                </div>
-                <div>
-                    <img className="rating" src="https://www.clipartmax.com/png/middle/307-3078264_star-rating-icon-rating-star-single-png.png" alt=""
-                    />
-                    <span>{avgRating}</span> <br />
+                    <h4 className='font-bold p-2 text-lg'>{name}</h4>
+                    <div className='flex justify-left'>
+                        <img className="h-4 w-4 translate-y-1 mr-1 rounded-lg" src="https://www.clipartmax.com/png/middle/307-3078264_star-rating-icon-rating-star-single-png.png" alt=""
+                        />
+                        <span>{avgRating}</span> <br />
+                    </div>
                     <span>{cuisines.join(", ")}</span> <br />
                     <span>{address}</span> <br />
-                    <span>₹{costForTwo/100}</span> <br />
+                    <span>₹{costForTwo / 100}</span> <br />
                 </div>
             </div>
-        </div>
+       
     )
 };
 

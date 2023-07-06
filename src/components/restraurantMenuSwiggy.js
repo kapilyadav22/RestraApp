@@ -1,41 +1,56 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import Shimmer from './shimmer';
+import { menuUrl } from './constants';
 
-export const RestraurantMenuSwiggy = () => {
-
-    const [restrauMenu, setrestrauMenu] = useState({});
+const RestraurantMenuSwiggy = () => {
+    const [restrauMenu, setrestrauMenu] = useState(null);
     const { resId } = useParams();
-    async function getRestraurants() {
+    console.log(resId);
+
+    useEffect(() => {
+        getRestraurants();
+    }, []);
+
+    const getRestraurants = async () => {
         try {
-            const data = await fetch("https://www.zomato.com/webroutes/getPage?page_url=/ncr/burger-king-connaught-place-new-delhi");
+            const data = await fetch(menuUrl + resId);
             const json = await data.json();
 
-            setrestrauMenu(json);
-            console.log(json);
-
+            setrestrauMenu(json.data);
+            console.log(json.data);
         }
         catch (error) {
             console.log(error);
         }
-    }
+    };
 
-    useEffect(() => {   
-        getRestraurants();
-    }, []);
+    const { id, name, cuisines, costForTwoMessage } = restrauMenu?.cards[0]?.card?.card?.info || {};
 
-    return (restrauMenu.length===0)? <Shimmer/>:(
-        <div>
-            <h2>Restraurant Id is : Swiggy</h2>
-            <h2>{restrauMenu?.page_data?.sections?.SECTION_BASIC_INFO?.name}</h2>
-            <h2>{restrauMenu?.page_data?.sections?.SECTION_BASIC_INFO?.cuisine_string} </h2>
-            <h2>{restrauMenu?.page_data?.sections?.SECTION_RES_HEADER_DETAILS?.LOCALITY?.text}</h2>
-            <img
-                className="card-image"
-                alt="" src={restrauMenu?.page_data?.sections?.SECTION_BASIC_INFO?.res_thumb}>
-            </img>
-            <h2>{restrauMenu?.page_data?.sections?.SECTION_RES_DETAILS?.IMAGE_MENUS?.menus[0]?.label} </h2>
-            <img src={restrauMenu.page_data?.sections?.SECTION_RES_DETAILS?.IMAGE_MENUS?.menus[0]?.thumb} alt="" />
+    const { itemCards } = restrauMenu?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card || {};
+
+
+    return (
+        <div className='body'>
+            {(restrauMenu === null) ? <Shimmer /> : (
+                <div>
+                    <h2>Restraurant Id is : {id}</h2>
+                    <h2>{name}</h2>
+                    <h3>{cuisines.join(", ")}</h3>
+                    <h3>{costForTwoMessage} </h3>
+                    <ul>
+                        {itemCards.map((item) => (
+                            <li key={item.card.info.id}>
+                                {item.card.info.name} - {" "} {"Rs."}
+                                {item.card.info.price / 100 || item.card.info.defaultPrice / 100}
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+            )
+            }
         </div>
     )
-}
+};
+
+export default RestraurantMenuSwiggy;

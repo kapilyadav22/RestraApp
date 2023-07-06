@@ -6,7 +6,7 @@ import About from './components/About';
 import { ErrorPage } from './components/errorPage';
 import { createBrowserRouter, Outlet, RouterProvider } from 'react-router-dom';
 import { Contact } from './components/Contact';
-import { RestraurantMenuSwiggy } from './components/restraurantMenuSwiggy';
+import  RestraurantMenuSwiggy  from './components/restraurantMenuSwiggy';
 
 function App() {
   return (
@@ -19,6 +19,8 @@ function App() {
     </>
   );
 };
+console.log(App());
+console.log(<App/>);
 
 export const appRouter = createBrowserRouter([
   {
