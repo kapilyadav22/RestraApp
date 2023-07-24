@@ -1,16 +1,21 @@
 import React from 'react';
-import User from './User';
 import UserClass from './UserClass';
 
 class About extends React.Component {
 
   constructor(props){
-    console.log("1. parent constructor.");
+    // console.log("1. parent constructor.");
     super(props);
+
+  }
+
+  async componentDidMount(){
+    // console.log("3. parents component mount")
+    
   }
 
   render() {
-    console.log("2. Parent render");
+    // console.log("2. Parent render");
     return (
       <div>
         <h1>About Us</h1>

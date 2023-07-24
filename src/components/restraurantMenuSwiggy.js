@@ -1,29 +1,13 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { useParams } from 'react-router-dom'
 import Shimmer from './shimmer';
-import { menuUrl } from './constants';
+import { useRestrauMenu } from '../utils/useRestrauMenu';
 
-const RestraurantMenuSwiggy = () => {
-    const [restrauMenu, setrestrauMenu] = useState(null);
+const RestraurantMenuSwiggy = () => {   
     const { resId } = useParams();
-    console.log(resId);
 
-    useEffect(() => {
-        getRestraurants();
-    }, []);
-
-    const getRestraurants = async () => {
-        try {
-            const data = await fetch(menuUrl + resId);
-            const json = await data.json();
-
-            setrestrauMenu(json.data);
-            console.log(json.data);
-        }
-        catch (error) {
-            console.log(error);
-        }
-    };
+    //custom hook
+    const restrauMenu = useRestrauMenu(resId);
 
     const { id, name, cuisines, costForTwoMessage } = restrauMenu?.cards[0]?.card?.card?.info || {};
 

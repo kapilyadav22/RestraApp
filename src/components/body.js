@@ -3,6 +3,7 @@ import RestraurantCard from './restraurantCard';
 import { swiggy_api_URL } from './constants';
 import Shimmer from './shimmer';
 import { Link } from 'react-router-dom';
+import { useOnlineStatus } from '../utils/useOnlineStatus';
 
 function filterData(text, restraurants) {
     const reslist = restraurants.filter((restraurant) =>
@@ -33,6 +34,14 @@ export default function Body() {
         getRestraurants();
     }, []);
 
+
+    const onlineStatus = useOnlineStatus(); 
+
+    if(onlineStatus===false){
+        return (
+            <h1>Please check your internet!!! Please check Your Internet Connection</h1>
+        )
+    }
     // Conditional rendering
     // if restraurantdata==null load shimmer ui
     // else if restaurandata!=null load actual data
@@ -63,7 +72,6 @@ export default function Body() {
                         Search
                     </button>
                 </div>
-
 
                 {(allRestraurants?.length === 0) ? <Shimmer /> :
                     (
