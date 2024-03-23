@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { menuUrl } from '../components/constants'
+import { menuUrl } from '../components/urlConstants'
 
 const useRestrauMenu = (resId) => {
 
@@ -14,7 +14,6 @@ const useRestrauMenu = (resId) => {
             const data = await fetch(menuUrl + resId);
             const json = await data.json();
             setrestrauMenu(json.data);
-            console.log(json.data);
         }
         catch (error) {
             console.log(error);

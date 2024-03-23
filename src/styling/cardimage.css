@@ -1,0 +1,51 @@
+.cardcontainer {
+    width: 250px;
+    height: 300px;
+    margin: 16px;
+    padding: 4px;
+    /* border: 1px solid black; */
+    border-radius: 10px;
+    /* background-color: rgb(233, 230, 230); */
+    line-height: 1.3;
+}
+
+.res-details{
+    width: 250px;
+}
+
+.cardimage {
+    width: 100%;
+    height: 150px;
+    border-radius: 10px;
+}
+
+
+.ellipsis {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: inline-block;
+    font-size: medium;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    width: 100%; 
+    margin: 0px;
+    color: rgb(90, 80, 80);
+  }
+
+  .titleellipsis {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: inline-block;
+    width: 100%; 
+    margin: 0px;
+  }
+  
+
+  /* .cardcontainer > .rating-space > span{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 8px;
+    text-align: center;
+  } */

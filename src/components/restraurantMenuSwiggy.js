@@ -1,35 +1,38 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useParams } from 'react-router-dom'
 import Shimmer from './shimmer';
 import { useRestrauMenu } from '../utils/useRestrauMenu';
+import RestraurantCategory from './restraurantCategory';
 
-const RestraurantMenuSwiggy = () => {   
+const RestraurantMenuSwiggy = () => {
     const { resId } = useParams();
+    const [showIndex, setShowIndex] = useState(-1);
 
     //custom hook
     const restrauMenu = useRestrauMenu(resId);
-
     const { id, name, cuisines, costForTwoMessage } = restrauMenu?.cards[0]?.card?.card?.info || {};
-
-    const { itemCards } = restrauMenu?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card || {};
-
+    const categories = restrauMenu?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
+        c => c.card?.card?.["@type"]==="type.googleapis.com/swiggy.presentation.food.v2.ItemCategory")
+    
+    console.log(categories);
 
     return (
-        <div className='body'>
+        <div className='text-center'>
             {(restrauMenu === null) ? <Shimmer /> : (
                 <div>
-                    <h2>Restraurant Id is : {id}</h2>
-                    <h2>{name}</h2>
-                    <h3>{cuisines.join(", ")}</h3>
-                    <h3>{costForTwoMessage} </h3>
-                    <ul>
-                        {itemCards.map((item) => (
-                            <li key={item.card.info.id}>
-                                {item.card.info.name} - {" "} {"Rs."}
-                                {item.card.info.price / 100 || item.card.info.defaultPrice / 100}
-                            </li>
-                        ))}
-                    </ul>
+                    <h1 className='font-bold my-6 text-2xl'>{name}</h1>
+                    <p className='font-bold text-lg'>{cuisines.join(", ")} - {costForTwoMessage}</p> 
+                    {
+                        categories.map((category, index) => (
+                            //controlled Component
+                            <RestraurantCategory 
+                            key={category?.card?.card.title} 
+                            data = {category?.card?.card}
+                            showItem = {index===showIndex?true:false}
+                            handleExpandItems = {()=> setShowIndex(index)}
+                            />
+                        ))
+                    }
                 </div>
             )
             }

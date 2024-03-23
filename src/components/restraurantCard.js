@@ -1,39 +1,50 @@
 import React from 'react'
-import { IMG_CDN_URL } from './constants';
+import { IMG_CDN_URL, ratingURL} from './urlConstants';
+import '../styling/cardimage.css';
 
 export const styleCard = {
     backgroundColor: "#ececec"
 }
 
-const RestraurantCard = (props) => {
-    const { resData } = props;
-    const { cloudinaryImageId,
-        name,
-        avgRating,
-        cuisines,
-        address, costForTwo
-    } = resData.data;
+const RestraurantCard = ({resData}) => {
+    const { cloudinaryImageId, name, avgRating, cuisines, locality,areaName,sla, costForTwo} = resData.info;
     return (
-        <div className='m-4 p-4 w-[250px] rounded-lg bg-pink-50 hover:bg-pink-200 sm:bg-yellow-50 sm:hover:bg-yellow-100' >
+        <div className='cardcontainer' >
             <img
-                className="card-image rounded-lg"
+                className="cardimage"
                 alt=""
                 src={IMG_CDN_URL + cloudinaryImageId}>
             </img>
-            <div className='res-details'>
-                    <h4 className='font-bold p-2 text-lg'>{name}</h4>
-                    <div className='flex justify-left'>
-                        <img className="h-4 w-4 translate-y-1 mr-1 rounded-lg" src="https://www.clipartmax.com/png/middle/307-3078264_star-rating-icon-rating-star-single-png.png" alt=""
+            <div>
+                    <h4 className='font-bold p-2 text-lg titleellipsis'>{name}</h4>
+                    <div className='rating-space flex justify-justify mr-2'>
+                        <img className="h-4 w-4 translate-y-1 mr-1 rounded-lg" src= {ratingURL} alt=""
                         />
-                        <span>{avgRating}</span> <br />
+                        <span className='mr-4 font-bold text-sm'>{avgRating }</span>
+                        <span className='mr-3 font-bold text-sm'>• {sla?.lastMileTravelString}</span>
+                        <span className='font-bold text-sm'>• {sla?.slaString}</span>
                     </div>
-                    <span>{cuisines.join(", ")}</span> <br />
-                    <span>{address}</span> <br />
-                    <span>₹{costForTwo / 100}</span> <br />
+                    <span className="ellipsis">{cuisines.join(", ")}</span> <br />
+                    <span className="ellipsis">{`${locality}, ${areaName}`}</span> <br />
+                    <span className='font-bold text-sm'>{costForTwo}</span> <br />
                 </div>
             </div>
        
     )
 };
+
+//higher order component
+export const withDisCountedLabel = (RestraurantCard) =>{
+    //returns a component
+    return (props) => {
+        //returns jsx inside that component
+        return (
+            <div>
+                <label className='absolute bg-black text-white ml-5 mt-2   p-2 rounded-lg'>Promoted</label>
+                <RestraurantCard {...props}/>
+            </div>
+        )
+    }
+}
 
 export default RestraurantCard;

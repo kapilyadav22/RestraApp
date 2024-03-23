@@ -1,5 +1,5 @@
 import React from 'react';
-import { errorURL } from './constants';
+import { errorURL } from './urlConstants';
 import { useRouteError } from 'react-router-dom';
 
 export const ErrorPage = () => {

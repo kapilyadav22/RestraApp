@@ -6,10 +6,11 @@ import About from './components/About';
 import { ErrorPage } from './components/errorPage';
 import { createBrowserRouter, Outlet } from 'react-router-dom';
 import { Contact } from './components/Contact';
-import  RestraurantMenuSwiggy  from './components/restraurantMenuSwiggy';
+import RestraurantMenuSwiggy from './components/restraurantMenuSwiggy';
 // import Grocery from './components/Grocery';
-import {lazy, Suspense} from 'react';
+import { lazy, Suspense } from 'react';
 import Shimmer from './components/shimmer';
+import { PopupProvider } from './components/Authentication/popupContext';
 
 //Chunking
 //Code splitting
@@ -24,9 +25,11 @@ function App() {
   return (
     <>
       <div className="App">
+        <PopupProvider>
         <Header />
         <Outlet />
         <Footer />
+           </PopupProvider>  
       </div>
     </>
   );
@@ -59,7 +62,11 @@ export const appRouter = createBrowserRouter([
       {
         path: "/Restraurant/:resId",
         element: <RestraurantMenuSwiggy/>,
-      }
+      },
+      {
+        path: "/",
+        element: <Body/>,
+      },
     ],
   },
 ]);

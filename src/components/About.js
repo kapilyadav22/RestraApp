@@ -1,5 +1,5 @@
 import React from 'react';
-import UserClass from './UserClass';
+import UserClass from './classBasedComponents/UserClass';
 
 class About extends React.Component {
 

@@ -2,7 +2,7 @@ export const IMG_CDN_URL = "https://res.cloudinary.com/swiggy/image/upload/fl_lo
 
 // Swiggy API to get Restaurant data with corsanywhere
 export const swiggy_api_URL =
-  "https://www.swiggy.com/dapi/restaurants/list/v5?lat=21.1702401&lng=72.83106070000001&page_type=DESKTOP_WEB_LISTING";
+  "https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.65200&lng=77.16630&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING";
 
   export const logo_URl = "https://png.pngtree.com/png-vector/20220623/ourmid/pngtree-food-logo-png-image_5297921.png";
 
@@ -11,3 +11,8 @@ export const swiggy_api_URL =
 
   export const zomatoURL ="https://www.zomato.com/webroutes/getPage?page_url=";
 export const menuUrl = "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=28.6247821&lng=77.30013249999999&restaurantId=";
+
+export const ratingURL = "https://www.clipartmax.com/png/middle/307-3078264_star-rating-icon-rating-star-single-png.png";
+
+
+export const myLinkedInProfile = "https://www.linkedin.com/in/kapilyadav22/";
