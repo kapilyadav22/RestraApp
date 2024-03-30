@@ -56,7 +56,7 @@ export default function Body() {
 
     return (
         <>
-            <div className="relative ...">
+            <div className="flex flex-col min-h-screen">
                 <div className="search p-4 m-4 items-center">
                     <input type="text"
                         className="p-2 rounded-lg border border-solid border-black"

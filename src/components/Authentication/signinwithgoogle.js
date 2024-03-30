@@ -1,7 +1,7 @@
 import React from 'react';
 import { signInWithPopup } from 'firebase/auth';
 import { auth, googleProvider } from './firebase';
-import './sideloginpopup.css';
+import '../../styling/sideloginpopup.css';
 import googleImage from '../../assets/icons/google.png'
 import { usePopup } from './popupContext';
 

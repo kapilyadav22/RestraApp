@@ -11,6 +11,10 @@ import RestraurantMenuSwiggy from './components/restraurantMenuSwiggy';
 import { lazy, Suspense } from 'react';
 import Shimmer from './components/shimmer';
 import { PopupProvider } from './components/Authentication/popupContext';
+import { Provider } from 'react-redux';
+import appStore from './redux/appStore';
+import Cart from './components/cart';
+import Payment from './components/payment';
 
 //Chunking
 //Code splitting
@@ -19,28 +23,28 @@ import { PopupProvider } from './components/Authentication/popupContext';
 //on demand loading
 //dynamic import
 
-const Grocery = lazy( () => import("./components/Grocery"));
+const Grocery = lazy(() => import("./components/Grocery"));
 
 function App() {
   return (
     <>
-      <div className="App">
-        <PopupProvider>
-        <Header />
-        <Outlet />
-        <Footer />
-           </PopupProvider>  
-      </div>
+      <Provider store={appStore}>
+        <div className="App">
+          <PopupProvider>
+            <Header />
+            <Outlet />
+            <Footer />
+          </PopupProvider>
+        </div>
+      </Provider>
     </>
   );
 };
-console.log(App());
-console.log(<App/>);
 
 export const appRouter = createBrowserRouter([
   {
     path: "/",
-    element: <App/>,
+    element: <App />,
     errorElement: <ErrorPage />,
     children: [
       {
@@ -49,23 +53,27 @@ export const appRouter = createBrowserRouter([
       },
       {
         path: "/contactus",
-        element: <Contact/>,
+        element: <Contact />,
       },
-      {
-        path: "/grocery",
-        element: <Suspense fallback= {<Shimmer/>}>  <Grocery/> </Suspense> ,
-      },
+      // {
+      //   path: "/grocery",
+      //   element: <Suspense fallback={<Shimmer />}>  <Grocery /> </Suspense>,
+      // },
       {
         path: "/",
-        element: <Body/>,
+        element: <Body />,
+      },
+      {
+        path: "/cart",
+        element: <Cart />,
       },
       {
         path: "/Restraurant/:resId",
-        element: <RestraurantMenuSwiggy/>,
+        element: <RestraurantMenuSwiggy />,
       },
       {
-        path: "/",
-        element: <Body/>,
+        path: "/Payment",
+        element: <Payment/>,
       },
     ],
   },

@@ -11,7 +11,7 @@ const RestraurantMenuSwiggy = () => {
     //custom hook
     const restrauMenu = useRestrauMenu(resId);
     const { id, name, cuisines, costForTwoMessage } = restrauMenu?.cards[0]?.card?.card?.info || {};
-    const categories = restrauMenu?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
+    const categories = restrauMenu?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
         c => c.card?.card?.["@type"]==="type.googleapis.com/swiggy.presentation.food.v2.ItemCategory")
     
     console.log(categories);
@@ -21,7 +21,7 @@ const RestraurantMenuSwiggy = () => {
             {(restrauMenu === null) ? <Shimmer /> : (
                 <div>
                     <h1 className='font-bold my-6 text-2xl'>{name}</h1>
-                    <p className='font-bold text-lg'>{cuisines.join(", ")} - {costForTwoMessage}</p> 
+                    {/* <p className='font-bold text-lg'>{cuisines.join(", ")} - {costForTwoMessage}</p>  */}
                     {
                         categories.map((category, index) => (
                             //controlled Component

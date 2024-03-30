@@ -1,32 +1,24 @@
 import React from 'react';
-import UserClass from './classBasedComponents/UserClass';
+import User from './User';
 
 class About extends React.Component {
 
   constructor(props){
-    // console.log("1. parent constructor.");
     super(props);
-
   }
 
   async componentDidMount(){
-    // console.log("3. parents component mount")
     
   }
 
   render() {
-    // console.log("2. Parent render");
     return (
-      <div>
-        <h1>About Us</h1>
-        <p>This is Our About Section Page</p>
-        {/* <User name = {"Kapil Yadav (function)"}/> */}
-        <UserClass name={"Kapil Yadav (classes)"} location={"Delhi"} />
+      <div className="container mx-auto px-4 py-8 justify-center">
+        <h1 className="text-3xl font-bold mb-4 text-center">About Us</h1>
+        <User name={"Kapil Yadav "} location={"Delhi"} />
       </div>
     )
   }
 }
 
 export default About;
-
-
