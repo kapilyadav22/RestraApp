@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom'
 import Shimmer from './shimmer';
 import { useRestrauMenu } from '../utils/useRestrauMenu';
 import RestraurantCategory from './restraurantCategory';
+import { ItemCategory } from './urlConstants';
 
 const RestraurantMenuSwiggy = () => {
     const { resId } = useParams();
@@ -12,10 +13,8 @@ const RestraurantMenuSwiggy = () => {
     const restrauMenu = useRestrauMenu(resId);
     const { id, name, cuisines, costForTwoMessage } = restrauMenu?.cards[0]?.card?.card?.info || {};
     const categories = restrauMenu?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
-        c => c.card?.card?.["@type"]==="type.googleapis.com/swiggy.presentation.food.v2.ItemCategory")
+        c => c.card?.card?.["@type"]===ItemCategory)
     
-    console.log(categories);
-
     return (
         <div className='text-center'>
             {(restrauMenu === null) ? <Shimmer /> : (

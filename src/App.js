@@ -7,44 +7,41 @@ import { ErrorPage } from './components/errorPage';
 import { createBrowserRouter, Outlet } from 'react-router-dom';
 import { Contact } from './components/Contact';
 import RestraurantMenuSwiggy from './components/restraurantMenuSwiggy';
-// import Grocery from './components/Grocery';
 import { lazy, Suspense } from 'react';
 import Shimmer from './components/shimmer';
 import { PopupProvider } from './components/Authentication/popupContext';
 import { Provider } from 'react-redux';
-import appStore from './redux/appStore';
+import { store, persistor } from './redux/appStore'; 
 import Cart from './components/cart';
 import Payment from './components/payment';
-
-//Chunking
-//Code splitting
-//Dynamic Bundling
-//Lazy Loading
-//on demand loading
-//dynamic import
+import { PersistGate } from 'redux-persist/integration/react';
 
 const Grocery = lazy(() => import("./components/Grocery"));
 
 function App() {
   return (
-    <>
-      <Provider store={appStore}>
-        <div className="App">
-          <PopupProvider>
-            <Header />
-            <Outlet />
-            <Footer />
-          </PopupProvider>
-        </div>
-      </Provider>
-    </>
+    <div className="App">
+      <PopupProvider>
+        <Header />
+        <Outlet />
+        <Footer />
+      </PopupProvider>
+    </div>
   );
-};
+}
+
+const AppWithProvider = () => (
+  <Provider store={store}>
+    <PersistGate loading={<Shimmer />} persistor={persistor}>
+      <App />
+    </PersistGate>
+  </Provider>
+);
 
 export const appRouter = createBrowserRouter([
   {
     path: "/",
-    element: <App />,
+    element: <AppWithProvider />,
     errorElement: <ErrorPage />,
     children: [
       {
@@ -55,13 +52,21 @@ export const appRouter = createBrowserRouter([
         path: "/contactus",
         element: <Contact />,
       },
-      // {
-      //   path: "/grocery",
-      //   element: <Suspense fallback={<Shimmer />}>  <Grocery /> </Suspense>,
-      // },
+      {
+        path: "/grocery",
+        element: (
+          <Suspense fallback={<Shimmer />}>
+            <Grocery />
+          </Suspense>
+        ),
+      },
       {
         path: "/",
-        element: <Body />,
+       element: (
+          <Suspense fallback={<Shimmer />}>
+            <Body />
+          </Suspense>
+        ),
       },
       {
         path: "/cart",
@@ -73,10 +78,10 @@ export const appRouter = createBrowserRouter([
       },
       {
         path: "/Payment",
-        element: <Payment/>,
+        element: <Payment />,
       },
     ],
   },
 ]);
 
-export default App;
+export default AppWithProvider;

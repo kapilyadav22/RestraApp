@@ -9,6 +9,55 @@
     line-height: 1.3;
 }
 
+.cardcontainer-shimmer {
+  width: 100%;
+  height: 60%;
+  border-radius: 10px;
+  background-color: #e3dddd; 
+  position: relative;
+  overflow: hidden;
+}
+
+.text-shimmer {
+  margin-top: 5px;
+  width: 60%;
+  height: 30px;
+  border-radius: 10px;
+  background-color: #e3dddd;
+  position: relative;
+  overflow: hidden;
+}
+
+.restradetails-shimmer {
+  margin-top:5px;
+  width: 100%;
+  height: 30px;
+  border-radius: 10px;
+  background-color: #e3dddd;
+  position: relative;
+  overflow: hidden;
+}
+.cardcontainer-shimmer::after,
+.restradetails-shimmer::after,
+.text-shimmer::after
+ {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -50%;
+  width: 150%;
+  height: 100%;
+  border-radius: 10px;
+  background: linear-gradient(to right, transparent 0%, rgb(255, 255, 255) 10%, transparent 80%);
+  animation: shimmer-animation 1s infinite;
+}
+
+@keyframes shimmer-animation {
+  100% {
+    left: 100%;
+  }
+}
+
 .res-details{
     width: 250px;
 }
