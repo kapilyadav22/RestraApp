@@ -15,7 +15,7 @@ export const myLinkedInProfile = "https://www.linkedin.com/in/kapilyadav22/";
 
 
 //restraurant API
-export const serverUrl = "http://165.22.223.85:3000";
+export const serverUrl = "https://www.lccoordinator.com:3000";
 export const swiggy_api_URL = serverUrl + "/api/restaurants?lat=28.65200&lng=77.16630&page_type=DESKTOP_WEB_LISTING";
 
 //restraurant Menu API
