@@ -21,8 +21,10 @@ const ItemList = ({ items }) => {
     }
 
     const handleRemoveButton = (item) => {
+        const {price, defaultPrice} = item?.card?.info;
         dispatch(removeItem({ item }));
         dispatch(updateTotalItems(totalCount-1));
+        dispatch(updateTotalPrice(totalPrice - (price?price/100 : defaultPrice/100)));
     }
     return (
         <div>
