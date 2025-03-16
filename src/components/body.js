@@ -26,7 +26,6 @@ export default function Body() {
             const json = await data.json();
             setAllRestraurants(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
             setFilterRestraurants(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
-            console.log(json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
         }
         catch (error) {
             console.log(error);

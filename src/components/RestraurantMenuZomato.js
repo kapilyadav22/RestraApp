@@ -13,8 +13,6 @@ export const RestraurantMenu = () => {
             const json = await data.json();
 
             setrestrauMenu(json);
-            console.log(json);
-
         }
         catch (error) {
             console.log(error);
