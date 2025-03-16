@@ -1,4 +1,6 @@
-export const IMG_CDN_URL = "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/";
+//export const IMG_CDN_URL = "https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/";
+export const IMG_CDN_URL = "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/";
+
 
 // Swiggy API to get Restaurant data with corsanywhere
 // export const swiggy_api_URL =
@@ -11,13 +13,13 @@ export const zomatoURL = "https://www.zomato.com/webroutes/getPage?page_url=";
 export const ratingURL = "https://www.clipartmax.com/png/middle/307-3078264_star-rating-icon-rating-star-single-png.png";
 export const myLinkedInProfile = "https://www.linkedin.com/in/kapilyadav22/";
 
-//Zwigato Server API :https://zwigato-server-bu9g.onrender.com
+
 //restraurant API
-export const swiggy_api_URL =
-"https://zwigato-server-bu9g.onrender.com/api/restaurants?lat=28.65200&lng=77.16630&page_type=DESKTOP_WEB_LISTING";
+export const serverUrl = "http://165.22.223.85:3000";
+export const swiggy_api_URL = serverUrl + "/api/restaurants?lat=28.65200&lng=77.16630&page_type=DESKTOP_WEB_LISTING";
 
 //restraurant Menu API
-export const menuUrl = "https://zwigato-server-bu9g.onrender.com/api/menu?page_type=REGULAR_MENU&complete_menu=true&lat=28.6247821&lng=77.30013249999999&restaurantId=";
+export const menuUrl = serverUrl +  "/api/menu?page_type=REGULAR_MENU&complete_menu=true&lat=28.6247821&lng=77.30013249999999&restaurantId=";
 
 
 export const ItemCategory = "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory";
